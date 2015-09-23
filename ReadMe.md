@@ -28,7 +28,7 @@ Instructions
 ----------------------
 
 1.  Download and extract the package.
-2.  In ArcCatalog, browse to WebmapWrappers > InsertToken.tbx.
+2.  In ArcCatalog, browse to InsertToken.tbx.
 3.  Right-click > edit CustomPrint.
 4.  Double-click on the Insert Token to Webmap JSON tool in the model.
 5.  Edit the Server, Username, and Password credentials to match the ArcGIS Server you wish to get a token from. Click OK.
@@ -38,10 +38,5 @@ Instructions
 9.  Close model builder, double-click on the model, and run it. **NOTE: When running from Desktop, always run with an output type set to PDF. Otherise, Desktop will interpret the output as a raster type which will negatively affect the output type when published to a geoprocessing service. The other formats can still be executed from the service once it's published.**
 10.  If it runs successfully, this can be published as a Geoprocessing Service
 
-**Notes**
 
--  The Insert Token to Webmap script tool is only designed to get a token and append it service references from one server. The CustomPrint model can be customized to daisy-chain multiple iterations of the Insert Token tool for multiple servers if desired.
 
--  The tool retrieves the Token URL from ArcGIS Server by sending a request to the REST Info page. This ensures that HTTPS will be used to get the token if it is configured on ArcGIS for Server.   
-
-- The default templates used by the Export Web Map Task are used. You can elect to use your own templates folder if desired.

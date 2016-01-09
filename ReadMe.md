@@ -8,7 +8,7 @@ ArcPy| ARCPY101
 Printing maps that contain secured services 
 http://resources.arcgis.com/en/help/main/10.1/index.html#//0154000005q3000000
 
-Due to a bug in ArcGIS server 10.2 (sp1) & 10.2.2, the <a href="http://forums.iis.net/t/1122937.aspx" target="_blank">resource proxy</a> will not handle the token for secured services during a print task.
+Due to a bug in ArcGIS server 10.2 (sp1) & 10.2.2, the <a href="http://forums.iis.net/t/1122937.aspx" target="_blank">resource proxy</a> will not handle the token for secured services during print task.
 
 This tool is designed as a workaround to the bug mentioned above.
 

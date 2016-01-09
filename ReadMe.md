@@ -1,42 +1,29 @@
-Insert Token
-============
+#Custom Print service for Resource Proxy
+##ARCPY101
 
-The purpose of this tool is to pre-process webmap JSON service references prior to sending the request to a print task. Within this context, the desire is to append tokens to services residing on a specified server. The documented solution to this scenario is outlined in the following Help Document provided by Esri. 
+Project | Ref 
+--- | --- 
+ArcPy| ARCPY101
 
 Printing maps that contain secured services 
 http://resources.arcgis.com/en/help/main/10.1/index.html#//0154000005q3000000
 
-However, due to a bug, specific layer references in the webmap JSON will not get a token.
+Due to a bug in ArcGIS server 10.2 (sp1) & 10.2.2, the <a href="http://forums.iis.net/t/1122937.aspx" target="_blank">resource proxy</a> will not handle the token for secured services during a print task.
 
-*[#NIM094431 A custom print service with saved credentials created from the Export Web Map task fails to print individual feature layers from a secured map service. ]*
+This tool is designed as a workaround to the bug mentioned above.
 
-**Check to make sure the workflow provided by Esri will not work before proceeding**. This sample was designed as a workaround to the bug mentioned above.
-
-Contents
-----------------------
-
-**addtoken.py** - The script that executes the WebMap JSON preprocessing. It is configured as a Script Tool and works with the Insert Token to Webmap JSON tool in the Toolbox.tbx object
-
-**Insert Token to Webmap JSON (in Toolbox.tbx)** - A Python script tool that takes Webmap JSON as input, modifies it, and returns the modified JSON as output.
-
-**Export Web Map (in Toolbox.tbx)** - A copy of the Export Web Map tool in the Server toolbox from ArcGIS Desktop. This tool takes webmap JSON as input and exports a map in a selected format. Can also export a map from Map Document templates.
-
-**CustomPrint (in Toolbox.tbx)** - Model that combines Replace Service Paths and Export Web Map into a single process. After running, this can be published as a print service.
-
-
-Instructions
-----------------------
-
+###Deployment
+----------------
 1.  Download and extract the package.
-2.  In ArcCatalog, browse to InsertToken.tbx.
-3.  Right-click > edit CustomPrint.
-4.  Double-click on the Insert Token to Webmap JSON tool in the model.
-5.  Edit the Server, Username, and Password credentials to match the ArcGIS Server you wish to get a token from. Click OK.
+2.  Reference the extracted folder in ArcMap.
+3.  Open addtoken.py in IDE, modify the server configurations and save the file.
+4.  Reference addToken.py to Insert Token to Webmap JSON tool.
+5.  Open the CustmPrint model and check for basic intelinking of tools & parameters (you can even change the reference of Export Web Map to your server's Export Web Map).
 6.  Save the model and close ModelBuilder.
 7.  Double-click on the CustomPrint Model to open the dialogue.
 8.  Change the Input JSON as appropriate. Click OK.
-9.  Close model builder, double-click on the model, and run it. **NOTE: When running from Desktop, always run with an output type set to PDF. Otherise, Desktop will interpret the output as a raster type which will negatively affect the output type when published to a geoprocessing service. The other formats can still be executed from the service once it's published.**
-10.  If it runs successfully, this can be published as a Geoprocessing Service
+9.  After it gets executed , publish as a GP service.
+
 
 
 

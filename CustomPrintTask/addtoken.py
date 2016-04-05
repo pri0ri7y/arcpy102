@@ -12,12 +12,12 @@ class TokenHandler:
 
 	def __init__(self):
 	
-	    # Server Configuration
-		self.tokenURL = "/Rajasthan/admin/generateToken"
-		self.userName = "deptadmin"
-		self.password = "deptadm!N#123"
-		self.serverName = "gistest1"
-		self.server = "gistest1.rajasthan.gov.in"
+	    # Server Configuration  Ex: http://system.domain.com/webadapter/rest/services
+		self.tokenURL = "/webadapter/admin/generateToken"
+		self.userName = "username"
+		self.password = "password"
+		self.serverName = "system"
+		self.server = "system.domain.com"
 		
 		# initiating process
 		self.main()
@@ -38,7 +38,7 @@ class TokenHandler:
 		self.params = urllib.urlencode({'username': self.userName, 'password': self.password, 'client': 'requestip', 'f': 'json'})		
 		self.headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}		
 		# Connect to URL and post parameters
-		httpConn = httplib.HTTPConnection('gistest1.rajasthan.gov.in')
+		httpConn = httplib.HTTPConnection('system.domain.com')
 		httpConn.request("POST", self.tokenURL, self.params, self.headers)		
 		# Read response
 		response = httpConn.getresponse()
